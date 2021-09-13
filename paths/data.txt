@@ -1,0 +1,6 @@
+/1_raw
+/2_interim
+/3_processed
+/4_imaging/raw
+/4_imaging/processed
+

@@ -1,0 +1,12 @@
+/1_protocols/histology
+/1_protocols/surgery
+/1_protocols/cloning
+/1_protocols/other
+/2_resources/plasmids
+/2_resources/primers
+/2_resources/rna-probes
+/2_resources/antibodies
+/2_resources/enzymes
+/2_resources/chemicals
+/2_resources/animals
+

@@ -1,0 +1,5 @@
+/1_resources/diagrams
+/1_resources/vector-graphics
+/1_resources/images
+/2_drafts
+/3_final

@@ -1,0 +1,9 @@
+/1_presentations/drafts
+/1_presentation/final
+/2_papers/drafts
+/2_papers/final
+/3_milestones/drafts
+/3_milestones/final
+/3_milestones/supplementary
+/4_posters/draft
+/4_posters/final
