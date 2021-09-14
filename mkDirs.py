@@ -47,7 +47,7 @@ class dirStructure(object):
     def mkDisseminate(self):
         with open('./paths/disseminate.txt') as disseminate_dirs:
             for dir in disseminate_dirs:
-                dis_dir = pathlib.Path(self.dir_parsed + '/4_dissemination' + dir.rstrip('\n'))
+                dis_dir = pathlib.Path(self.dir_parsed + '/6_dissemination' + dir.rstrip('\n'))
                 dis_dir.mkdir(parents = True, exist_ok = True)
 
     #generate a directory tree using the UNIX tree command with html output
