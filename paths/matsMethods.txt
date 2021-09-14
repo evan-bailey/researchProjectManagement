@@ -9,4 +9,3 @@
 /2_resources/enzymes
 /2_resources/chemicals
 /2_resources/animals
-
