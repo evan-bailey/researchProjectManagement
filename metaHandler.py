@@ -1,14 +1,22 @@
 #!/usr/bin/python
 
-#Script to save and retrieve project metadata for multiple projects
+"""
+Script to save and retrieve project metadata for multiple projects
+"""
 
-import os, pathlib, sqlite3
+import os
+import pathlib
+import sqlite3
 from sqlite3 import Error
 
-#create an object class to generate the metadata database
+
 class metaDB(object):
-    #as input requires the directory for the db (Define in cli.py)
-    #default name is 'meta.db'
+    """
+    Object class to generate the metadata database and interact with it.
+    Requires a directory as input, which is where the database will be built.
+    Default database name for metadata is meta.db
+    """
+
     def __init__(self, db_dir):
         self.db_dir = db_dir
         self.filename = 'meta.db'
@@ -16,7 +24,7 @@ class metaDB(object):
         self.project = ""
         self.project_dir = ""
 
-    def create_connection(full_path):
+    def create_connection(self, full_path):
         """
         Create a database connection to the SQLite database
         specified by db_file
@@ -31,7 +39,7 @@ class metaDB(object):
 
         return conn
 
-    def isSQLite3_db(full_path):
+    def isSQLite3_db(self, full_path):
         """
         Check existence of database
         :param full_path: path to database
@@ -43,16 +51,17 @@ class metaDB(object):
         if not isfile(full_path):
             return False
 
-        if getsize(full_path) < 100 #SQLite DB header is 100 bytes
+        if getsize(full_path) < 100:
             return False
+            # SQLite DB header is 100 bytes
 
-        with open(full_path, 'rb') as fd:
-            header = fd.read(100)
+        with open(full_path, 'rb') as file_d:
+            header = file_d.read(100)
 
-        return header[:16] == 'SQLite format 3\x00' #returns true if SQLite format 3
+        return header[:16] == 'SQLite format 3\x00'
+        # returns true if SQLite format 3
 
-    #initiate a database if no meta.db sqlite3 file is found
-    def init_db(full_path):
+    def init_db(self, full_path):
         """
         Generate database if not present
         :param full_path: path to database
@@ -61,18 +70,18 @@ class metaDB(object):
         if not full_path.isSQLite3_db():
             print("Generating database for project metadata")
 
-            meta_db = create_connection(full_path)
+            meta_db = create_connection(self, full_path)
             cursor = meta_db.cursor()
             cursor.execute('''CREATE TABLE IF NOT EXISTS project_metadata
-                           (Name TEXT, Directory TEXT, Date TEXT, Project_ID INTEGER)''')
+                           (Name TEXT, Directory TEXT, Date TEXT,
+                           Project_ID INTEGER)''')
             meta_db.commit()
             meta_db.close()
 
-        elif:
+        else:
             print("Project metadata database found")
 
-    #function to write project metadata to the database table
-    def write_metadata(conn, project_data):
+    def write_metadata(self, conn, project_data):
         """
         Write project metadata to database
         :param conn: connection object from create_connection()
@@ -90,11 +99,4 @@ class metaDB(object):
 
         return cursor.lastrowid
 
-
-
-
-
-
-
-#TO DO: generate a table for project metadata
-#.
+# TO DO: generate a table for project metadata
