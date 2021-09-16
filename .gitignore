@@ -1,2 +1,5 @@
 *.html
 *.doc
+settings.json
+.vscode
+*vscode
