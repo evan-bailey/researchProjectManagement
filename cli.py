@@ -75,18 +75,18 @@ if args.get('command') == 'start':
     # project_meta.init_db()
 
     # generate the project directory structure
-    from mkDirs import dirStructure
+    from mk_dirs import DirStructure
 
-    projectStructure = dirStructure(root_dir, project_name)
+    projectStructure = DirStructure(root_dir, project_name)
 
     print('Creating project in: ', projectStructure.dir_full)
 
-    projectStructure.mkProjectMgmt()
-    projectStructure.mkMatsMethods()
-    projectStructure.mkData()
-    projectStructure.mkAnalysis()
-    projectStructure.mkFigures()
-    projectStructure.mkDisseminate()
+    projectStructure.mk_projectmgmt()
+    projectStructure.mk_matsmethods()
+    projectStructure.mk_data()
+    projectStructure.mk_analysis()
+    projectStructure.mk_figures()
+    projectStructure.mk_disseminate()
 
 elif args.get('command') == 'templates':
 
