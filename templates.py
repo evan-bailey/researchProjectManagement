@@ -27,7 +27,7 @@ class ImmunoTemplates(object):
                                    'X',
                                    'Y',
                                    'MeanGrey'])
-    
+
     def section_info(self):
         """Generate a template for recording information regarding
         histological sections"""
@@ -50,9 +50,9 @@ class ImmunoTemplates(object):
                         'LaminarA_2',
                         'LaminarB_1',
                         'LaminarB_2'])
-    
+
     def conditions(self):
-        """Generate a template for recording information on 
+        """Generate a template for recording information on
         experimental conditions"""
         conditions_dir=self.immuno_dir + "conditions.csv"
 
@@ -63,4 +63,3 @@ class ImmunoTemplates(object):
             title_writer=csv.writer(csvfile)
             title_writer.writerow(['SampleID',
                                    'Condition'])
-
