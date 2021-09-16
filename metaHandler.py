@@ -80,7 +80,7 @@ class metaDB(object):
         else:
             print("Project metadata database found")
 
-    def write_metadata(conn, project_data):
+    def write_metadata(self, conn, project_data):
         """
         Write project metadata to database
         :param conn: connection object from create_connection()

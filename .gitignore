@@ -1,5 +1,7 @@
 *.html
 *.doc
 settings.json
-.vscode
+.vscode/
 *vscode
+projectmgmt_venv/
+databases/
