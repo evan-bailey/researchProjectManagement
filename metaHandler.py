@@ -4,8 +4,7 @@
 Script to save and retrieve project metadata for multiple projects
 """
 
-import os
-import pathlib
+
 import sqlite3
 from sqlite3 import Error
 
@@ -24,7 +23,7 @@ class metaDB(object):
         self.project = ""
         self.project_dir = ""
 
-    def create_connection(self, full_path):
+    def create_connection(self):
         """
         Create a database connection to the SQLite database
         specified by db_file
@@ -33,13 +32,13 @@ class metaDB(object):
         """
         conn = None
         try:
-            conn = sqlite3.connect(full_path)
-        except Error as e:
-            print(e)
+            conn = sqlite3.connect(self.full_path)
+        except Error as conn_err:
+            print(conn_err)
 
         return conn
 
-    def isSQLite3_db(self, full_path):
+    def is_sqlite3_db(self):
         """
         Check existence of database
         :param full_path: path to database
@@ -48,29 +47,29 @@ class metaDB(object):
 
         from os.path import isfile, getsize
 
-        if not isfile(full_path):
+        if not isfile(self.full_path):
             return False
 
-        if getsize(full_path) < 100:
+        if getsize(self.full_path) < 100:
             return False
             # SQLite DB header is 100 bytes
 
-        with open(full_path, 'rb') as file_d:
+        with open(self.full_path, 'rb') as file_d:
             header = file_d.read(100)
 
         return header[:16] == 'SQLite format 3\x00'
         # returns true if SQLite format 3
 
-    def init_db(self, full_path):
+    def init_db(self):
         """
         Generate database if not present
         :param full_path: path to database
         :return: confirmation message
         """
-        if not full_path.isSQLite3_db():
+        if not self.full_path.isSQLite3_db():
             print("Generating database for project metadata")
 
-            meta_db = create_connection(self, full_path)
+            meta_db = create_connection(self, self.full_path)
             cursor = meta_db.cursor()
             cursor.execute('''CREATE TABLE IF NOT EXISTS project_metadata
                            (Name TEXT, Directory TEXT, Date TEXT,
@@ -81,7 +80,7 @@ class metaDB(object):
         else:
             print("Project metadata database found")
 
-    def write_metadata(self, conn, project_data):
+    def write_metadata(conn, project_data):
         """
         Write project metadata to database
         :param conn: connection object from create_connection()
