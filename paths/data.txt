@@ -1,5 +1,6 @@
-/1_raw
-/2_interim
-/3_processed
+/1_raw/Histology
+/1_raw/General
+/2_interim/Histology
+/3_processed/Histology
 /4_imaging/1_raw
 /4_imaging/2_processed

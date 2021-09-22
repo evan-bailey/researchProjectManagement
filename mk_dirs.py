@@ -26,6 +26,9 @@ class DirStructure(object):
         """
         Method to generate the project management directory & subdirectories
         """
+        # should change paths to be platform agnostic
+        # and also check that braced expansion works properly
+        # and to change the .txt files to be more easily edited
         with open('./paths/projectMgmt.txt', encoding="utf-8") as projectmgmt_dirs:
             for directory in projectmgmt_dirs:
                 p_dir = pathlib.Path(self.dir_parsed + '/1_project-management'
