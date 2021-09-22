@@ -6,3 +6,4 @@ settings.json
 projectmgmt_venv/
 databases/
 .pylintrc
+docs/
