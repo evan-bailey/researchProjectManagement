@@ -70,7 +70,7 @@ class MolBioTemplates(object):
     def __init__(self, root_dir) -> None:
         self.root_dir=root_dir
         self.molbio_dir=os.path.join(root_dir,"3_data","1_raw","General")
-    
+   
     # Consider changing the csv writing function to have the headers saved in
     # a single txt file, and extracting the row for the specified template
     # such that the template generation function is a generic function
@@ -114,4 +114,3 @@ class MolBioTemplates(object):
                                    'Gel_Band_2',
                                    'Gel_Band_3',
                                    'Gel_Band_4'])
-                                   
