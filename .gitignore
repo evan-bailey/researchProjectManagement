@@ -7,3 +7,4 @@ projectmgmt_venv/
 databases/
 .pylintrc
 docs/
+*.code-workspace
